@@ -29,12 +29,32 @@ class Playerlist extends Component {
             .then(response => {
                 let updatedPlayers = [this.state.players];
                 updatedPlayers = response.data.players;
+
                 let updatedPlayersLoaded = this.state.playersLoaded;
                 updatedPlayersLoaded = !this.state.playersLoaded;
+
                 let updatedQuarterbacks = this.state.quarterbacks;
                 updatedQuarterbacks = updatedPlayers.filter( player => player.position === "QB");
 
-                this.setState( {players: updatedPlayers, quarterbacks: updatedQuarterbacks, playersLoaded: updatedPlayersLoaded} );
+                let updatedWideReceivers = this.state.wideReceivers;
+                updatedWideReceivers = updatedPlayers.filter( player => player.position === "WR");
+
+                let updatedRunningBacks = this.state.runningBacks;
+                updatedRunningBacks = updatedPlayers.filter( player => player.position === "RB");
+
+                let updatedTightEnds = this.state.tightEnds;
+                updatedTightEnds = updatedPlayers.filter( player => player.position === "TE");
+
+
+                this.setState({
+                    players: updatedPlayers, 
+                    quarterbacks: updatedQuarterbacks, 
+                    wideReceivers: updatedWideReceivers, 
+                    runningBacks: updatedRunningBacks, 
+                    tightEnds: updatedTightEnds ,
+                    playersLoaded: updatedPlayersLoaded} 
+                );
+
                 console.log(this.state);
             })
             .catch(error => {
@@ -69,9 +89,39 @@ class Playerlist extends Component {
                                 playerTeam={player.team} />
                         ))}
                     </Col>
-                    <Col sm={3}><h2>WR</h2></Col>
-                    <Col sm={3}><h2>RB</h2></Col>
-                    <Col sm={3}><h2>TE</h2></Col>
+                    <Col sm={3}>
+                        <h2>WR</h2>
+                        {this.state.wideReceivers.map( (player, index) => (
+                            <PlayerCard
+                                key={index}
+                                playerAdp={index + 1}
+                                playerName={player.name}
+                                playerPosition={player.position}
+                                playerTeam={player.team} />
+                        ))}
+                    </Col>
+                    <Col sm={3}>
+                        <h2>RB</h2>
+                        {this.state.runningBacks.map( (player, index) => (
+                            <PlayerCard
+                                key={index}
+                                playerAdp={index + 1}
+                                playerName={player.name}
+                                playerPosition={player.position}
+                                playerTeam={player.team} />
+                        ))}
+                    </Col>
+                    <Col sm={3}>
+                        <h2>TE</h2>
+                        {this.state.tightEnds.map( (player, index) => (
+                            <PlayerCard
+                                key={index}
+                                playerAdp={index + 1}
+                                playerName={player.name}
+                                playerPosition={player.position}
+                                playerTeam={player.team} />
+                        ))}
+                    </Col>
                 </Row>
             </Container>    
         );
