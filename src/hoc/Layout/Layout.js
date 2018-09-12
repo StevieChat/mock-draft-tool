@@ -18,6 +18,9 @@ class Layout extends Component {
                     <Col sm={4}>Team Preview</Col>
                 </Row>
                 <Row>
+                    <Col sm={12}>DraftManager</Col>
+                </Row>
+                <Row>
                     <Col sm={12}>
                         <Playerlist />
                     </Col>
