@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { setConfiguration, Container, Row, Col } from 'react-grid-system';
 import Playerlist from '../../containers/Playerlist/Playerlist';
+import DraftManager from '../../containers/DraftManager/DraftManager';
 
 class Layout extends Component {
     constructor (props) {
@@ -13,14 +14,16 @@ class Layout extends Component {
     render () {
         return (
             <Container>
-                <Row>
+                <Row justify="center">
                     <Col sm={8}>DraftBoard</Col>
                     <Col sm={4}>Team Preview</Col>
                 </Row>
-                <Row>
-                    <Col sm={12}>DraftManager</Col>
+                <Row justify="center">
+                    <Col sm={6}>
+                        <DraftManager />
+                    </Col>
                 </Row>
-                <Row>
+                <Row justify="center">
                     <Col sm={12}>
                         <Playerlist />
                     </Col>

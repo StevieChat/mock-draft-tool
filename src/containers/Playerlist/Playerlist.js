@@ -14,58 +14,10 @@ class Playerlist extends Component {
         });
     }
 
-    state = {
-        players: [],
-        quarterbacks: [],
-        wideReceivers: [],
-        runningBacks: [],
-        tightEnds: [],
-        playersLoaded: false
-    }
-
     componentDidMount () {
-
         if (!this.props.playersLoaded) {
             this.props.onInitPlayers();
         }
-        
-        // if(!this.state.playersLoaded) {
-        //     axios.get('https://fantasyfootballcalculator.com/api/v1/adp/ppr?teams=12&year=2018')
-        //     .then(response => {
-        //         let updatedPlayers = [this.state.players];
-        //         updatedPlayers = response.data.players;
-
-        //         let updatedPlayersLoaded = this.state.playersLoaded;
-        //         updatedPlayersLoaded = !this.state.playersLoaded;
-
-        //         let updatedQuarterbacks = this.state.quarterbacks;
-        //         updatedQuarterbacks = updatedPlayers.filter( player => player.position === "QB");
-
-        //         let updatedWideReceivers = this.state.wideReceivers;
-        //         updatedWideReceivers = updatedPlayers.filter( player => player.position === "WR");
-
-        //         let updatedRunningBacks = this.state.runningBacks;
-        //         updatedRunningBacks = updatedPlayers.filter( player => player.position === "RB");
-
-        //         let updatedTightEnds = this.state.tightEnds;
-        //         updatedTightEnds = updatedPlayers.filter( player => player.position === "TE");
-
-
-        //         this.setState({
-        //             players: updatedPlayers, 
-        //             quarterbacks: updatedQuarterbacks, 
-        //             wideReceivers: updatedWideReceivers, 
-        //             runningBacks: updatedRunningBacks, 
-        //             tightEnds: updatedTightEnds ,
-        //             playersLoaded: updatedPlayersLoaded} 
-        //         );
-
-        //         console.log(this.state);
-        //     })
-        //     .catch(error => {
-        //         console.log(error);
-        //     }); 
-        // }
     }
 
     render () {
